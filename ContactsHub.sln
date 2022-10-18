@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsHub", "ContactsHub\ContactsHub.csproj", "{3FEB00A6-F0D8-4522-B9C6-A8E567E0EC63}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FEB00A6-F0D8-4522-B9C6-A8E567E0EC63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FEB00A6-F0D8-4522-B9C6-A8E567E0EC63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FEB00A6-F0D8-4522-B9C6-A8E567E0EC63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FEB00A6-F0D8-4522-B9C6-A8E567E0EC63}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -15,4 +15,6 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<Contact> Contacts { get; set; }
     
     public DbSet<Friend> Friends { get; set; }
+    
+    public DbSet<FriendRequest> FriendRequests { get; set; }
 }

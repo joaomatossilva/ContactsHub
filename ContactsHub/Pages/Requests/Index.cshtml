@@ -1,0 +1,74 @@
+@page
+@model ContactsHub.Pages.Requests.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<h2>Incoming</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FriendRequestIncoming[0].FromUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FriendRequestIncoming[0].DateTimeUtc)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.FriendRequestIncoming) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FromUser.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeUtc)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<h2>Outgoing</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FriendRequestOutgoing[0].ToUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FriendRequestOutgoing[0].DateTimeUtc)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.FriendRequestOutgoing) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToUser.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeUtc)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<p><a asp-page="./Create">Create</a></p>

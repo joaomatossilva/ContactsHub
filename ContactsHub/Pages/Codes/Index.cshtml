@@ -1,0 +1,34 @@
+@page
+@model ContactsHub.Pages.Codes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Code[0].Short)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Code) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Short)
+            </td>
+            <td>
+                <a asp-page="./Renew" asp-route-id="@item.Id">Renew</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

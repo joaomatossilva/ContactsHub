@@ -16,7 +16,7 @@ public class Create : PageModel
     public class CreateRequestViewModel
     {
         [Required]
-        public string ToUserId { get; set; }
+        public string Code { get; set; }
     }
     
     [BindProperty]
@@ -40,8 +40,10 @@ public class Create : PageModel
             return Page();
         }
 
-        var toUser = await _context.Users.FirstOrDefaultAsync(x => x.Id == CreateRequest.ToUserId);
-        if (toUser == null)
+        var code = await _context.Codes
+            .FirstOrDefaultAsync(x => x.Short == CreateRequest.Code);
+        
+        if (code == null)
         {
             return NotFound();
         }
@@ -50,7 +52,7 @@ public class Create : PageModel
         var newRequest = new FriendRequest
         {
             FromUserId = userId,
-            ToUserId = CreateRequest.ToUserId,
+            ToUserId = code.UserId,
             DateTimeUtc = DateTime.UtcNow,
             State = FriendRequestState.Pending
         };

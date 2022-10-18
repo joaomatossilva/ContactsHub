@@ -19,6 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Pages\Codes" />
       <Folder Include="Pages\MyContacts" />
     </ItemGroup>
 

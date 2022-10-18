@@ -37,5 +37,49 @@ namespace ContactsHub.Pages.Requests
                 .Where(x => x.ToUserId == userId && x.State == FriendRequestState.Pending)
                 .Include(f => f.FromUser).ToListAsync();
         }
+
+        public async Task<IActionResult> OnPostAccept(Guid id)
+        {
+            var userId = User.GetUserId();
+            var request = await _context.FriendRequests
+                .FirstOrDefaultAsync(x => x.Id == id && x.ToUserId == userId);
+            
+            if (request != null)
+            {
+                request.State = FriendRequestState.Accepted;
+
+                var newFriend = new Friend
+                {
+                    UserId = userId,
+                    FriendUserId = request.FromUserId
+                };
+                var reverseFriend = new Friend
+                {
+                    UserId = request.FromUserId,
+                    FriendUserId = userId
+                };
+                _context.Friends.Add(newFriend);
+                _context.Friends.Add(reverseFriend);
+                
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToPage("./Index");
+        }
+        
+        public async Task<IActionResult> OnPostReject(Guid id)
+        {
+            var userId = User.GetUserId();
+            var request = await _context.FriendRequests
+                .FirstOrDefaultAsync(x => x.Id == id && x.ToUserId == userId);
+
+            if (request != null)
+            {
+                request.State = FriendRequestState.Rejected;
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToPage("./Index");
+        }
     }
 }

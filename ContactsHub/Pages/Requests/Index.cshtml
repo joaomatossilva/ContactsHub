@@ -30,9 +30,11 @@
                 @Html.DisplayFor(modelItem => item.DateTimeUtc)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                <form method="post">
+                    <input type="hidden" name="id" value="@item.Id" />
+                    <button class="btn btn-primary" asp-page-handler="Accept">Accept</button>
+                    <button class="btn btn-danger" asp-page-handler="Reject">Reject</button>
+                </form>
             </td>
         </tr>
     }
@@ -62,9 +64,7 @@
                 @Html.DisplayFor(modelItem => item.DateTimeUtc)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-page="./Cancel" asp-route-id="@item.Id">Cancel</a>
             </td>
         </tr>
     }

@@ -19,6 +19,7 @@ builder.Services.AddRazorPages(opt =>
     opt.Conventions.AuthorizeFolder("/MyContacts");
     opt.Conventions.AuthorizeFolder("/Friends");
     opt.Conventions.AuthorizeFolder("/Codes");
+    opt.Conventions.AuthorizeFolder("/Invite");
 });
 
 var app = builder.Build();

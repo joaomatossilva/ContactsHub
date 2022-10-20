@@ -5,7 +5,23 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <a href="@Url.Page("MyContacts/Index")">My contacts</a>
+    <div class="row">
+
+        <h1 class="display-4">Welcome</h1>
+
+        <h3 class="mt-5">Never lose a contact again!</h3>
+    </div>
+    
+    <div class="row">
+        <p class="mt-5">Contact Hub is your online address book where you keep your friends and share each other contacs.</p>
+    </div>
 </div>
+
+@if (Model.Code != null)
+{
+    <div class="text-center mt-5">
+        <h4>Great stuff!</h4>
+        <p>I see you already have a code from a friend. Click the button to enter start the journey!</p>
+        <a asp-page="/Invite/Index" asp-route-code="@Model.Code" class="btn btn-primary btn-lg">Start Here</a>
+    </div>
+}

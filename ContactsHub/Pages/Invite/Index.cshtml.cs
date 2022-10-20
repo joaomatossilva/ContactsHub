@@ -49,7 +49,7 @@ public class Index : PageModel
         }
 
         ShareCode = myCode.Short;
-        ShareUrl = $"{this.Request.Scheme}://{this.Request.Host}/invite?code={myCode.Short}";
+        ShareUrl = $"{this.Request.Scheme}://{this.Request.Host}?code={myCode.Short}";
         if (code != null)
         {
             CreateRequest = new CreateRequestViewModel

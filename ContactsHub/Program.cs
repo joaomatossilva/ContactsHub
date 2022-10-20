@@ -19,6 +19,7 @@ builder.Services.AddDefaultIdentity<User>(options =>
         options.Password.RequireNonAlphanumeric = false;
         options.Password.RequireLowercase = false;
         options.Password.RequireUppercase = false;
+        options.SignIn.RequireConfirmedAccount = false;
     })
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages(opt =>

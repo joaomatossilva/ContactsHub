@@ -13,7 +13,13 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(opt =>
+{
+    opt.Conventions.AuthorizeFolder("/Requests");
+    opt.Conventions.AuthorizeFolder("/MyContacts");
+    opt.Conventions.AuthorizeFolder("/Friends");
+    opt.Conventions.AuthorizeFolder("/Codes");
+});
 
 var app = builder.Build();
 

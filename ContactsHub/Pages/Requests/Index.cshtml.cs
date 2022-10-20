@@ -43,28 +43,30 @@ namespace ContactsHub.Pages.Requests
             var userId = User.GetUserId();
             var request = await _context.FriendRequests
                 .FirstOrDefaultAsync(x => x.Id == id && x.ToUserId == userId);
-            
-            if (request != null)
+
+            if (request == null)
             {
-                request.State = FriendRequestState.Accepted;
-
-                var newFriend = new Friend
-                {
-                    UserId = userId,
-                    FriendUserId = request.FromUserId
-                };
-                var reverseFriend = new Friend
-                {
-                    UserId = request.FromUserId,
-                    FriendUserId = userId
-                };
-                _context.Friends.Add(newFriend);
-                _context.Friends.Add(reverseFriend);
-                
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
+            
+            request.State = FriendRequestState.Accepted;
 
-            return RedirectToPage("./Index");
+            var newFriend = new Friend
+            {
+                UserId = userId,
+                FriendUserId = request.FromUserId
+            };
+            var reverseFriend = new Friend
+            {
+                UserId = request.FromUserId,
+                FriendUserId = userId
+            };
+            _context.Friends.Add(newFriend);
+            _context.Friends.Add(reverseFriend);
+            
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("/Friends/Contacts", new {id = newFriend.Id});
         }
         
         public async Task<IActionResult> OnPostReject(Guid id)

@@ -24,7 +24,7 @@
     @foreach (var item in Model.FriendRequestIncoming) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FromUser.UserName)
+                @Html.DisplayFor(modelItem => item.FromUser.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateTimeUtc)
@@ -58,7 +58,7 @@
     @foreach (var item in Model.FriendRequestOutgoing) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ToUser.UserName)
+                @Html.DisplayFor(modelItem => item.ToUser.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateTimeUtc)

@@ -178,6 +178,8 @@ namespace ContactsHub.Areas.Identity.Pages.Account
                     {
                         _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
 
+                        await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.GivenName, Input.Name));
+                        
                         var userId = await _userManager.GetUserIdAsync(user);
                         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                         code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

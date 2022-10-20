@@ -20,7 +20,7 @@
 @foreach (var item in Model.Friends) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FriendUser.UserName)
+                @Html.DisplayFor(modelItem => item.FriendUser.Name)
             </td>
             <td>
                 <a asp-page="./Contacts" asp-route-id="@item.Id">Contacts</a> |

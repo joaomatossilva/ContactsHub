@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ContactsHub.Areas.Identity.Pages.Account.Manage
 {
+    using System.Security.Claims;
     using Data.Model;
 
     public class IndexModel : PageModel
@@ -118,6 +119,19 @@ namespace ContactsHub.Areas.Identity.Pages.Account.Manage
             }
 
             await _userManager.UpdateAsync(user);
+            
+            //sync claim
+            var claims = await _userManager.GetClaimsAsync(user);
+            var nameClaim = claims.FirstOrDefault(x => x.Type == ClaimTypes.GivenName);
+            if (nameClaim != null && nameClaim.Value != user.Name)
+            {
+                await  _userManager.ReplaceClaimAsync(user, nameClaim, new Claim(ClaimTypes.GivenName, user.Name));
+            }
+            else if (nameClaim == null)
+            {
+                await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.GivenName, user.Name));
+            }
+            
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();

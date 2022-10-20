@@ -12,7 +12,7 @@ public class Contact
     [ForeignKey("User")]
     public string UserId { get; set; }
     
-    public IdentityUser User { get; set; }
+    public User User { get; set; }
     
     public ContactType Type { get; set; }
     

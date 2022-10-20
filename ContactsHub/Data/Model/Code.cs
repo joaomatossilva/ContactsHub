@@ -17,7 +17,7 @@ public class Code
     [ForeignKey("User")]
     public string UserId { get; set; }
     
-    public virtual IdentityUser User { get; set; }
+    public virtual User User { get; set; }
     
     public bool IsActive { get; set; }
 }

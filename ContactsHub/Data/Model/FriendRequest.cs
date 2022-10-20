@@ -9,14 +9,14 @@ public class FriendRequest
     public Guid Id { get; set; }
     
     [Display(@Name = "From")]
-    public virtual IdentityUser FromUser { get; set; }
+    public virtual User FromUser { get; set; }
     
     [Required]
     [ForeignKey("User")]
     public string FromUserId { get; set; }
     
     [Display(@Name = "To")]
-    public virtual IdentityUser ToUser { get; set; }
+    public virtual User ToUser { get; set; }
     
     [Required]
     [ForeignKey("FriendUser")]

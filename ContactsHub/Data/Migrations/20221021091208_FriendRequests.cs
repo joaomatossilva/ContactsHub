@@ -13,11 +13,11 @@ namespace ContactsHub.Data.Migrations
                 name: "FriendRequests",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    FromUserId = table.Column<string>(type: "TEXT", nullable: false),
-                    ToUserId = table.Column<string>(type: "TEXT", nullable: false),
-                    DateTimeUtc = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    State = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    FromUserId = table.Column<string>(type: "text", nullable: false),
+                    ToUserId = table.Column<string>(type: "text", nullable: false),
+                    DateTimeUtc = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    State = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

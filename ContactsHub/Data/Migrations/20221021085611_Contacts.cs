@@ -13,11 +13,11 @@ namespace ContactsHub.Data.Migrations
                 name: "Contacts",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    UserId = table.Column<string>(type: "TEXT", nullable: false),
-                    Type = table.Column<int>(type: "INTEGER", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
-                    Value = table.Column<string>(type: "TEXT", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    UserId = table.Column<string>(type: "text", nullable: false),
+                    Type = table.Column<int>(type: "integer", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Value = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
